@@ -30,7 +30,7 @@ def predict(model, batch, flipped_batch, use_gpu):
     if use_gpu:
         inputs = inputs.cuda()
     outputs, _, _ = model(inputs)
-    probs = torch.sigmoid(outputs)
+    probs = torch.nn.functional.sigmoid(outputs)
 
     if flipped_batch is not None:
         flipped_image_ids, flipped_inputs = flipped_batch['image_id'], flipped_batch['input']
@@ -38,7 +38,7 @@ def predict(model, batch, flipped_batch, use_gpu):
         if use_gpu:
             flipped_inputs = flipped_inputs.cuda()
         flipped_outputs, _, _ = model(flipped_inputs)
-        flipped_probs = torch.sigmoid(flipped_outputs)
+        flipped_probs = torch.nn.functional.sigmoid(flipped_outputs)
 
         probs += torch.flip(flipped_probs, (3,))  # flip back and add
         probs *= 0.5

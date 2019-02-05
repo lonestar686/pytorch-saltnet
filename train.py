@@ -22,6 +22,9 @@ from transforms import *
 import models
 from utils import create_optimizer, choose_device, create_lr_scheduler
 
+# add multiple gpus
+os.environ['CUDA_VISIBLE_DEVICES']='0, 1, 2, 3'
+
 parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 parser.add_argument("--comment", type=str, default='', help='comment in tensorboard title')
 parser.add_argument('--device', default='auto', choices=['cuda', 'cpu'], help='running with cpu or cuda')
