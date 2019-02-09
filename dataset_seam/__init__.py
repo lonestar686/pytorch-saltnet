@@ -1,1 +1,1 @@
-from .seam_data import SEAM
+from .seam_data import SEAM, TileBase
