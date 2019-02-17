@@ -72,7 +72,7 @@ class TileBase:
         mask = vol[iy, iz:iz+self.tile_size, ix:ix+self.tile_size]
 
         SALT_VEL = 4480
-        SALT_TOL = 101
+        SALT_TOL = 10
 
         mask = mask.astype(np.uint32)
 
